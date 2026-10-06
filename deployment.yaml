@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-ticket-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: customer-ticket-api
+  template:
+    metadata:
+      labels:
+        app: customer-ticket-api
+    spec:
+      containers:
+        - name: customer-ticket-api
+          image: customer-ticket-api:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
